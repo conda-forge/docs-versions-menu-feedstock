@@ -1,5 +1,5 @@
 {% set name = "docs-versions-menu" %}
-{% set version = "0.5.0rc2" %}
+{% set version = "0.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/docs_versions_menu-{{ version }}.tar.gz
-  sha256: ef976254e1451ec8b7b082c39c070df1a379652c874ef4da2f4774d20837a48c
+  sha256: e1caab7be510d8522e81a2f9fb1f5294e5117d64342598ddc9c0a72432bd6204
 
 build:
   noarch: python
   number: 0
-  script: "{{ PYTHON }} -m pip install . -vv"
+  script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - docs-versions-menu = docs_versions_menu.cli:main
 
@@ -44,7 +44,7 @@ about:
   license: MIT
   license_family: MIT
   license_file: LICENSE
-  summary: 'A versions-menu for Sphinx-based documentation.'
+  summary: A versions-menu for Sphinx-based documentation.
   doc_url: https://goerz.github.io/docs_versions_menu
   dev_url: https://github.com/goerz/docs_versions_menu
 

@@ -6,24 +6,24 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/docs_versions_menu-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/docs_versions_menu-{{ version }}.tar.gz
   sha256: 8c6eae5836fb63e4f9700387385c5074dac8187609538422dab5fa39de110a73
 
 build:
   noarch: python
-  number: 0
+  number: 1
   script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - docs-versions-menu = docs_versions_menu.cli:main
 
 requirements:
   host:
-    - python >=3.7
+    - python {{ python_min }}
     - pip
     - setuptools
 
   run:
-    - python >=3.7
+    - python >={{ python_min }}
     - jinja2
     - click >=6.7
     - packaging
@@ -35,6 +35,7 @@ test:
     - docs_versions_menu
   requires:
     - pip
+    - python {{ python_min }}
   commands:
     - docs-versions-menu --help
     - pip check

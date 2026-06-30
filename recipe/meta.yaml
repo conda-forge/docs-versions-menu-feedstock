@@ -1,5 +1,5 @@
 {% set name = "docs-versions-menu" %}
-{% set version = "0.5.2" %}
+{% set version = "0.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/docs_versions_menu-{{ version }}.tar.gz
-  sha256: 8c6eae5836fb63e4f9700387385c5074dac8187609538422dab5fa39de110a73
+  sha256: 07f6110275ec45238e4b1fa8e1eeda32306067914e94f9beb5694df124bce78b
 
 build:
   noarch: python
-  number: 1
+  number: 0
   script: {{ PYTHON }} -m pip install . -vv
   entry_points:
     - docs-versions-menu = docs_versions_menu.cli:main
@@ -24,11 +24,11 @@ requirements:
 
   run:
     - python >={{ python_min }}
-    - jinja2
+    - jinja2 >=3.0
     - click >=6.7
-    - packaging
-    - pyparsing >=2.0.2
-    - sphinx
+    - packaging >=17.0
+    - pyparsing >=3.1
+    - sphinx >=7.2
 
 test:
   imports:
